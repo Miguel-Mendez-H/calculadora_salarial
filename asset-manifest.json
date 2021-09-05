@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/calculadora_salarial/static/css/main.342aa55b.chunk.css",
+    "main.js": "/calculadora_salarial/static/js/main.da48358f.chunk.js",
+    "main.js.map": "/calculadora_salarial/static/js/main.da48358f.chunk.js.map",
+    "runtime-main.js": "/calculadora_salarial/static/js/runtime-main.ea02f18b.js",
+    "runtime-main.js.map": "/calculadora_salarial/static/js/runtime-main.ea02f18b.js.map",
+    "static/css/2.4be38407.chunk.css": "/calculadora_salarial/static/css/2.4be38407.chunk.css",
+    "static/js/2.09d6a367.chunk.js": "/calculadora_salarial/static/js/2.09d6a367.chunk.js",
+    "static/js/2.09d6a367.chunk.js.map": "/calculadora_salarial/static/js/2.09d6a367.chunk.js.map",
+    "static/js/3.b91cce5e.chunk.js": "/calculadora_salarial/static/js/3.b91cce5e.chunk.js",
+    "static/js/3.b91cce5e.chunk.js.map": "/calculadora_salarial/static/js/3.b91cce5e.chunk.js.map",
+    "index.html": "/calculadora_salarial/index.html",
+    "static/css/2.4be38407.chunk.css.map": "/calculadora_salarial/static/css/2.4be38407.chunk.css.map",
+    "static/css/main.342aa55b.chunk.css.map": "/calculadora_salarial/static/css/main.342aa55b.chunk.css.map",
+    "static/js/2.09d6a367.chunk.js.LICENSE.txt": "/calculadora_salarial/static/js/2.09d6a367.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea02f18b.js",
+    "static/css/2.4be38407.chunk.css",
+    "static/js/2.09d6a367.chunk.js",
+    "static/css/main.342aa55b.chunk.css",
+    "static/js/main.da48358f.chunk.js"
+  ]
+}
