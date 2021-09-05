@@ -1,39 +1,45 @@
-import {getCesantias,getInteresesCesantias,getPrima,getVacaciones} from '../cargaPrestacional/CargaPrestacional'
-import {getFsp,getPension,getSalud} from '../seguridadSocial/SeguridadSocial'
+import { getCesantias, getInteresesCesantias, getPrima, getVacaciones } from '../cargaPrestacional/CargaPrestacional'
+import { getFsp, getPension, getSalud } from '../seguridadSocial/SeguridadSocial'
+import {SALARIO_ORDINARIO} from '../../config/Types'
 
-let saludP = {
-    ordinario: 0.04,
-    integral: 0.04,
-    servicios: 0.125
+function calcularOrdinario(salario) {
+
+    let vacaciones = getVacaciones(salario)
+    let prima = getPrima(salario)
+    let cesantias = getCesantias(salario)
+    let intereses = getInteresesCesantias(salario)
+
+    let pension = getPension(salario, SALARIO_ORDINARIO)
+    
+    let salud = getSalud(salario, SALARIO_ORDINARIO)
+    
+    let fondoS = getFsp(salario)
+
+    let neto = Number(salario)
+        + vacaciones
+        + prima
+        + cesantias
+        + intereses
+        - pension
+        - salud
+        - fondoS
+
+    let data = { vacaciones: vacaciones, prima: prima, cesantias: cesantias, intereses: intereses, pension: pension, salud: salud, fondoS: fondoS, neto: neto }
+
+    return data
 }
 
-let pensionP = {
-    ordinario: 0.04,
-    integral: 0.04,
-    servicios:0.16
+
+function obtenerSalarioOrdinario(ingresoSalarial,otrosIngresos) {
+
+    console.log(ingresoSalarial, otrosIngresos)
+
+    let salario = ingresoSalarial + otrosIngresos
+
+    let dataTable = calcularOrdinario(salario)
+    console.log(dataTable)
+
+    return dataTable
 }
 
-function Ordinario(salario) {
-
-    return (
-        salario
-        + getVacaciones(salario)
-        + getPrima(salario)
-        + getCesantias(salario)
-        + getInteresesCesantias(salario)
-        - getPension(salario, pensionP.ordinario)
-        - getSalud(salario, saludP.ordinario)
-        - getFsp(salario)
-    )
-}
-
-// function GetHtml(){
-//     let salario = Ordinario(4500000)
-//     return(
-//         <div> {salario} </div>
-//     )
-// }
-
-console.log(Ordinario(4500000))
-
-export default Ordinario;
+export default obtenerSalarioOrdinario;

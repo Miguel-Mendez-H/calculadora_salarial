@@ -1,45 +1,42 @@
-import { getFsp, getPension, getSalud, getArl} from '../seguridadSocial/SeguridadSocial'
+import { getFsp, getPension, getSalud, getArl } from '../seguridadSocial/SeguridadSocial'
 
-let saludP = {
-    ordinario: 0.04,
-    integral: 0.04,
-    servicios: 0.125
+import { PORCENTAJE_BASE_SALARIAL_PRESTACION_SERVICIOS } from '../../config/Globals'
+import { SALARIO_SERVICIOS } from '../../config/Types'
+
+
+
+
+function calcularPrestacionServicios(salario, tipoDeRiesgoArl) {
+
+    let getBaseSalarial = salario * PORCENTAJE_BASE_SALARIAL_PRESTACION_SERVICIOS
+
+    let pension = getPension(getBaseSalarial, SALARIO_SERVICIOS)
+    let salud = getSalud(getBaseSalarial, SALARIO_SERVICIOS)
+
+    let fondoS = getFsp(salario, getBaseSalarial)
+
+    let arl = getArl(salario, tipoDeRiesgoArl)
+
+    let neto = Number(salario)
+        - pension
+        - salud
+        - fondoS
+        - arl
+
+    let data = { pension: pension, salud: salud, fondoS: fondoS, arl: arl, neto: neto }
+
+    console.log('datos:', data)
+    return data
 }
 
-let pensionP = {
-    ordinario: 0.04,
-    integral: 0.04,
-    servicios: 0.16
-}
+function obtenerPrestacionServicios(ingresoSalarial, otrosIngresos,tipoDeRiesgoArl) {
 
-let baseSalarial = {
-    integral: 0.7,
-    servicios: 0.4
-}
+    let salario = ingresoSalarial + otrosIngresos
 
-let arlP = {
-    riesgo1: 0.00522,
-    riesgo2: 0.01044,
-    riesgo3: 0.02436,
-    riesgo4: 0.0435,
-    riesgo5: 0.06960
-}
+    let dataTable = calcularPrestacionServicios(salario,tipoDeRiesgoArl)
 
-function Servicios(salario) {
-
-    let getBaseSalarial = salario * baseSalarial.servicios
-
-    return (
-        salario
-        - getPension(getBaseSalarial, pensionP.servicios)
-        - getSalud(getBaseSalarial, saludP.servicios)
-        - getFsp(salario)
-        - getArl(salario, arlP.riesgo1)
-        
-    )
+    return dataTable
 }
 
 
-console.log(Servicios(4500000))
-
-export default Servicios;
+export default obtenerPrestacionServicios;
