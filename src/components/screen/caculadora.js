@@ -20,24 +20,27 @@ function Calculadora() {
     const [tipoDeRiesgoArl, setTipoDeRiesgoArl] = useState(0)
 
     const [data, setData] = useState({})
-
+    
     const handleChange = e => {
         
-        setSalario(parseInt(e.target.value || 0))
-        setData(obtenerSalarioOrdinario(salario, otrosIngresos))
-        setData(obtenerSalarioIntegral(salario, otrosIngresos))
-        setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
+        const salarioUsuario = parseInt(e.target.value)
+
+        setSalario(salarioUsuario,() => console.log(salarioUsuario))
+        
+        setData(obtenerSalarioOrdinario(salarioUsuario, otrosIngresos))
+        setData(obtenerSalarioIntegral(salarioUsuario, otrosIngresos))
+        setData(obtenerPrestacionServicios(salarioUsuario, otrosIngresos,tipoDeRiesgoArl))
     }
 
     const handleChange2 = e => {
-        setOtrosIngresos(parseInt(e.target.value || 0))
+        setOtrosIngresos(parseInt(e.target.value))
         setData(obtenerSalarioOrdinario(salario, otrosIngresos))
         setData(obtenerSalarioIntegral(salario, otrosIngresos))
         setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
     }
 
     const handleChange3 = e => {
-        setTipoDeRiesgoArl(parseInt(e.target.value || 0))
+        setTipoDeRiesgoArl(parseInt(e.target.value))
         setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
     }
 
