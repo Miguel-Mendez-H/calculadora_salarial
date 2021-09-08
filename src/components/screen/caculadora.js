@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import './calculadora.css'
 
-import GetTabla from './tabla'
+import ObtenerTablaCalduladora from './tabla'
 import { ButtonGroup, Button, TextField, InputAdornment, InputLabel, Select, MenuItem } from '@material-ui/core'
 
 import obtenerSalarioOrdinario from '../componentsapp/Salarios/Ordinario'
 import obtenerPrestacionServicios from '../componentsapp/Salarios/Servicios'
 import obtenerSalarioIntegral from '../componentsapp/Salarios/Integral'
-import ObtenerGuiaApp from "./components/contenidoTexto"
+import Accordion from './accordion'
 
 
 
@@ -22,21 +22,29 @@ function Calculadora() {
     const [data, setData] = useState({})
 
     const handleChange = e => {
+        
         setSalario(parseInt(e.target.value || 0))
+        setData(obtenerSalarioOrdinario(salario, otrosIngresos))
+        setData(obtenerSalarioIntegral(salario, otrosIngresos))
+        setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
     }
 
     const handleChange2 = e => {
         setOtrosIngresos(parseInt(e.target.value || 0))
+        setData(obtenerSalarioOrdinario(salario, otrosIngresos))
+        setData(obtenerSalarioIntegral(salario, otrosIngresos))
+        setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
     }
 
     const handleChange3 = e => {
         setTipoDeRiesgoArl(parseInt(e.target.value || 0))
+        setData(obtenerPrestacionServicios(salario, otrosIngresos,tipoDeRiesgoArl))
     }
 
     return (
         <div className='containerCalculadora'>
             <div className='contenidoParrafo'>
-                <ObtenerGuiaApp></ObtenerGuiaApp>
+                <Accordion></Accordion>
             </div>
 
             <div className='contenidoBotones-Tabla'>
@@ -88,7 +96,7 @@ function Calculadora() {
                     </ButtonGroup>
                 </div>
                 <div className='contenidoTabla'>
-                    <GetTabla data={data}></GetTabla>
+                    <ObtenerTablaCalduladora data={data}></ObtenerTablaCalduladora>
                 </div>
             </div>
         </div>

@@ -14,3 +14,17 @@
 .MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeSmall{
     font-size: 20px;
 }
+
+.cargaPrestacional{
+    min-width: 200px;
+}
+
+.seguridadSocial{
+    min-width: 200px;
+}
+
+.MuiTableRow-root.MuiTableRow-footer{
+    background-color:#3f51b5;
+    font-size: 20px;
+
+}

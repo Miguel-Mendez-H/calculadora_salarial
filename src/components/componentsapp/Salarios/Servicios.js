@@ -8,6 +8,7 @@ import { SALARIO_SERVICIOS } from '../../config/Types'
 
 function calcularPrestacionServicios(salario, tipoDeRiesgoArl) {
 
+   
     let getBaseSalarial = salario * PORCENTAJE_BASE_SALARIAL_PRESTACION_SERVICIOS
 
     let pension = getPension(getBaseSalarial, SALARIO_SERVICIOS)
@@ -15,7 +16,7 @@ function calcularPrestacionServicios(salario, tipoDeRiesgoArl) {
 
     let fondoS = getFsp(salario, getBaseSalarial)
 
-    let arl = getArl(salario, tipoDeRiesgoArl)
+    let arl = getArl(getBaseSalarial, tipoDeRiesgoArl)
 
     let neto = Number(salario)
         - pension
@@ -31,7 +32,9 @@ function calcularPrestacionServicios(salario, tipoDeRiesgoArl) {
 
 function obtenerPrestacionServicios(ingresoSalarial, otrosIngresos,tipoDeRiesgoArl) {
 
-    let salario = ingresoSalarial + otrosIngresos
+    let salario = Number(ingresoSalarial) + Number(otrosIngresos)
+
+    console.log('Salario', salario)
 
     let dataTable = calcularPrestacionServicios(salario,tipoDeRiesgoArl)
 
