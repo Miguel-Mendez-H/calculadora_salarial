@@ -20,7 +20,7 @@ export default function ObtenerTablaCalduladora(props) {
 
     let format = (value) => {
         if (!value) return 0
-        return value.toLocaleString('en-US')
+        return value.toLocaleString('es-CO',{style:'currency',currency:'COP', maximumFractionDigits:0})
     }
 
 
@@ -29,13 +29,13 @@ export default function ObtenerTablaCalduladora(props) {
             <Table className={classes.table} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
+                        <TableCell align="center" className={classes.tittle}>Concepto</TableCell>
+                        <TableCell align="center" className={classes.tittle}>Valor</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell className={classes.tittle} align="center" colSpan={2}>
                             Carga prestacional
                         </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell align="center" className={classes.tittle}>Concepto</TableCell>
-                        <TableCell align="center" selected={true} className={classes.tittle}>Valor</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -83,7 +83,7 @@ export default function ObtenerTablaCalduladora(props) {
                 </TableBody>
                 <TableFooter >
                     <TableRow>
-                        <TableCell className={classes.tittle} component="td" scope="row">Neto</TableCell>
+                        <TableCell className={classes.tittle} component="td" scope="row">Salario neto</TableCell>
                         <TableCell  className={classes.tittle} align="right">{format(props.data.neto)}</TableCell>
                     </TableRow>
                 </TableFooter>

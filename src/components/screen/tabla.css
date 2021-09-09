@@ -3,28 +3,37 @@
     width:100%
 }
 
+.MuiTableContainer-root{
+    margin: 0%;
+}
 .table>:not(:last-child)>:last-child>*{
     width: 50%;
 }
 
+.MuiTableCell-sizeSmall:last-child{
+    width: 50%;
+}
+
 .MuiTableHead-root{
-    background-color:#3f51b5;
+    background-color:#3949ab;
 }
 
 .MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeSmall{
     font-size: 20px;
 }
 
-.cargaPrestacional{
-    min-width: 200px;
+
+.MuiTableCell-root.MuiTableCell-body.cargaPrestacional.MuiTableCell-alignRight.MuiTableCell-sizeSmall{
+color:#50B10B
 }
 
-.seguridadSocial{
-    min-width: 200px;
+.MuiTableCell-root.MuiTableCell-body.seguridadSocial.MuiTableCell-alignRight.MuiTableCell-sizeSmall{
+    color:red
 }
 
 .MuiTableRow-root.MuiTableRow-footer{
-    background-color:#3f51b5;
+    background-color:#3949ab;
     font-size: 20px;
 
 }
+

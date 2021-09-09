@@ -22,9 +22,9 @@ let tiposDeRiesgo = {
     4: 0.06960
 }
 
-const getPension = (salario, tipoSalario) => Math.round(salario * pensionP[tipoSalario])
+const getPension = (salario, tipoSalario) => (salario * pensionP[tipoSalario])
 
-const getSalud = (salario, tipoSalario) => Math.round(salario * saludP[tipoSalario])
+const getSalud = (salario, tipoSalario) => (salario * saludP[tipoSalario])
 
 const getFsp = (salario, salarioBase = salario) => {
 
@@ -51,6 +51,6 @@ const getFsp = (salario, salarioBase = salario) => {
     return fsp
 }
 
-const getArl = (salario, tipoDeRiesgo) => Math.round((salario * tiposDeRiesgo[tipoDeRiesgo]))
+const getArl = (salario, tipoDeRiesgo) => ((salario * tiposDeRiesgo[tipoDeRiesgo]))
 
 export { getFsp, getPension, getSalud, getArl}

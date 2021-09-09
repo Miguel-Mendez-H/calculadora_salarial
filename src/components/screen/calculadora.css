@@ -1,9 +1,20 @@
 .containerCalculadora{
-    border: blue 2px solid;
     display: flex;
     width: 100%;
+
 }
 
+.contenidoBotones-Tabla{
+    width: 70%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenidoTabla{
+    max-width: 60%;
+    min-width: 60%;
+}
 .SelectorArl{
     display: flex;
     flex-flow: column;
@@ -11,13 +22,10 @@
     margin: 1%;
     
 }
-.contenidoParrafo{
-    width: 50%;
+.accordeonInformacion{
+    width: 30%;
     margin: 3%;
-}
-.contenidoBotones-Tabla{
-    width: 50%;
-    margin: 3%;
+
 }
 .inputParaSalario{
     text-align: center;
